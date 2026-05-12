@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td{
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th{
+            background: #2c3e50;
+            color: white;
+        }
+
+        .present{
+            background: green;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .absent{
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button{
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Mark Attendance</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <table>
+
+            <tr>
+
+                <th>Roll No</th>
+                <th>Student Name</th>
+                <th>Status</th>
+
+            </tr>
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>{{ student.roll_number }}</td>
+
+                <td>{{ student.user.username }}</td>
+
+                <td>
+
+                    <select name="status_{{ student.id }}">
+
+                        <option value="Present">
+                            Present
+                        </option>
+
+                        <option value="Absent">
+                            Absent
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br>
+
+        <button type="submit">
+            Save Attendance
+        </button>
+
+    </form>
+
+</body>
+</html>
