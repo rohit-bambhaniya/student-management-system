@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create_student</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<div class="card card-box p-4">
+
+    <h3 class="mb-4">
+        Add Student
+    </h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Phone</label>
+                <input type="text" class="form-control" name="phone">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Roll Number</label>
+                <input type="text" class="form-control" name="roll_no">
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label>Address</label>
+                <textarea class="form-control" rows="4" name="address"></textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Save Student
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+</body>
+</html>

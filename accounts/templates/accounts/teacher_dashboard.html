@@ -1,40 +1,35 @@
-<!-- teacher_dashboard.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Teacher Dashboard</title>
-    <style>
-        body { margin:0; font-family: Arial; display:flex; }
-        .sidebar { width:220px; background:#34495e; color:white; padding:20px; }
-        .sidebar a { display:block; color:white; padding:10px; text-decoration:none; }
-        .sidebar a:hover { background:#2c3e50; }
-        .main { flex:1; padding:20px; background:#f4f6f7; }
-
-        .card {
-            background:white;
-            padding:20px;
-            margin-bottom:15px;
-            border-radius:10px;
-            box-shadow:0 2px 5px rgba(0,0,0,0.1);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teacher_dashboard</title>
 </head>
 <body>
+    {% extends 'base.html' %}
 
-<div class="sidebar">
-    <h2>Teacher</h2>
-    <a href="#">Students</a>
-    <a href="#">Add Marks</a>
-    <a href="#">Attendance</a>
-    <a href="{% url 'logout' %}">Logout</a>
+{% block title %}
+Teacher Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Teacher Dashboard
+</h2>
+
+<div class="card card-box p-4">
+
+    <h4>
+        Welcome Teacher
+    </h4>
+
+    <p>
+        Manage attendance, subjects and students.
+    </p>
+
 </div>
 
-<div class="main">
-    <h1>Welcome Teacher</h1>
-
-    <div class="card">Today's Classes: 3</div>
-    <div class="card">Pending Marks Upload</div>
-</div>
-
+{% endblock %}
 </body>
 </html>

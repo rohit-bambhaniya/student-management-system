@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom mb-4 rounded p-3">
+    <div class="container-fluid">
+
+        <h4 class="mb-0">
+            Student Management System
+        </h4>
+
+        <div>
+            <span class="me-3">
+                Welcome, {{ request.user.username }} |
+                {{ request.user.role|title }}
+            </span>
+
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">
+                Logout
+            </a>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'courses',
     'results',
 ]
+ALLOWED_HOSTS = ['192.168.1.5', 'localhost', '127.0.0.1']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +130,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'login'

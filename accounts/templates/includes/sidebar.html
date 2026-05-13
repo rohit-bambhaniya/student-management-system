@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sidebar</title>
+</head>
+<body>
+    <div class="sidebar p-3">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="#">
+            <i class="bi bi-people"></i>
+            Manage Students
+        </a>
+
+        <a href="#">
+            <i class="bi bi-person-workspace"></i>
+            Teachers
+        </a>
+
+        <a href="#">
+            <i class="bi bi-calendar-check"></i>
+            Attendance
+        </a>
+
+    {% elif request.user.role == 'teacher' %}
+
+        <a href="{% url 'teacher_dashboard' %}">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="#">
+            <i class="bi bi-book"></i>
+            Subjects
+        </a>
+
+        <a href="#">
+            <i class="bi bi-calendar-check"></i>
+            Attendance
+        </a>
+
+    {% elif request.user.role == 'student' %}
+
+        <a href="{% url 'student_dashboard' %}">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="#">
+            <i class="bi bi-person"></i>
+            My Profile
+        </a>
+
+        <a href="#">
+            <i class="bi bi-book"></i>
+            Results
+        </a>
+
+    {% endif %}
+
+</div>
+</body>
+</html>

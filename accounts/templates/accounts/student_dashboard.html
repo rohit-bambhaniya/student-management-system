@@ -1,41 +1,35 @@
-<!-- student_dashboard.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Dashboard</title>
-    <style>
-        body { margin:0; font-family: Arial; display:flex; }
-        .sidebar { width:220px; background:#1abc9c; color:white; padding:20px; }
-        .sidebar a { display:block; color:white; padding:10px; text-decoration:none; }
-        .sidebar a:hover { background:#16a085; }
-
-        .main { flex:1; padding:20px; background:#ecf0f1; }
-
-        .card {
-            background:white;
-            padding:20px;
-            margin-bottom:15px;
-            border-radius:10px;
-            box-shadow:0 2px 5px rgba(0,0,0,0.1);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student_Dashboard</title>
 </head>
 <body>
+    {% extends 'base.html' %}
 
-<div class="sidebar">
-    <h2>Student</h2>
-    <a href="#">Profile</a>
-    <a href="#">Marks</a>
-    <a href="#">Attendance</a>
-    <a href="{% url 'logout' %}">Logout</a>
+{% block title %}
+Student Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Student Dashboard
+</h2>
+
+<div class="card card-box p-4">
+
+    <h4>
+        Welcome {{ request.user.username }}
+    </h4>
+
+    <p>
+        View your profile, attendance and results.
+    </p>
+
 </div>
 
-<div class="main">
-    <h1>Welcome {{ request.user.username }}</h1>
-
-    <div class="card">Marks: 85%</div>
-    <div class="card">Attendance: 92%</div>
-</div>
-
+{% endblock %}
 </body>
 </html>
