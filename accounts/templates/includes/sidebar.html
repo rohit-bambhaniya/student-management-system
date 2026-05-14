@@ -7,6 +7,14 @@
 </head>
 <body>
     <div class="sidebar p-3">
+
+    <h3 class="text-center mb-4">
+        SMS Panel
+    </h3>
+
+    {% if request.user.role == 'admin' %}
+
+        <a href="{% url 'admin_dashboard' %}">
             <i class="bi bi-speedometer2"></i>
             Dashboard
         </a>
