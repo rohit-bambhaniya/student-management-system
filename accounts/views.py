@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from students.models import Student
 
 
 # Login View
@@ -66,7 +67,17 @@ def teacher_dashboard(request):
 @login_required
 def student_dashboard(request):
 
+    student = Student.objects.get(
+        user=request.user
+    )
+
+    context = {
+
+        'student': student
+    }
+
     return render(
         request,
-        'accounts/student_dashboard.html'
+        'accounts/student_dashboard.html',
+        context
     )
