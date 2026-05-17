@@ -6,7 +6,7 @@
     <title>teacher_dashboard</title>
 </head>
 <body>
-    {% extends 'base.html' %}
+  {% extends 'base.html' %}
 
 {% block title %}
 Teacher Dashboard
@@ -14,22 +14,171 @@ Teacher Dashboard
 
 {% block content %}
 
-<h2 class="mb-4">
-    Teacher Dashboard
-</h2>
+<div class="container-fluid">
 
-<div class="card card-box p-4">
+    <h2 class="mb-4">
+        Teacher Dashboard
+    </h2>
 
-    <h4>
-        Welcome Teacher
-    </h4>
+    <div class="card shadow-lg border-0 p-4 rounded-4">
 
-    <p>
-        Manage attendance, subjects and students.
-    </p>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h3 class="fw-bold">
+                    Welcome {{ request.user.username }}
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Teacher Information Panel
+                </p>
+            </div>
+
+            <div>
+                <i class="bi bi-person-workspace fs-1 text-primary"></i>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Subject
+                    </h6>
+
+                    <h5>
+                        {{ teacher.subject }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Qualification
+                    </h6>
+
+                    <h5>
+                        {{ teacher.qualifications }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Experience
+                    </h6>
+
+                    <h5>
+                        {{ teacher.experience }} Years
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Salary
+                    </h6>
+
+                    <h5>
+                        ₹ {{ teacher.salary }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Phone Number
+                    </h6>
+
+                    <h5>
+                        {{ teacher.phone }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Joining Date
+                    </h6>
+
+                    <h5>
+                        {{ teacher.joining_date }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-12 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Address
+                    </h6>
+
+                    <h5>
+                        {{ teacher.address }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-12">
+
+                <div class="card p-3 shadow-sm bg-light">
+
+                    <h6 class="text-muted">
+                        Account Created
+                    </h6>
+
+                    <h5>
+                        {{ teacher.created_at }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 {% endblock %}
+
 </body>
 </html>
