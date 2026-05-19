@@ -9,6 +9,12 @@ class Student(models.Model):
         on_delete=models.CASCADE
     )
 
+    student_name = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True
+
+    )
     roll_num = models.CharField(
         max_length=20
     )
@@ -32,7 +38,9 @@ class Student(models.Model):
     )
 
     created_at = models.DateTimeField(
-        auto_now_add=True
+        auto_now_add=True,
+        blank=True,
+        null=True
     )
 
     def __str__(self):

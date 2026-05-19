@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete_student</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block title %}
+Delete Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-4 rounded-4">
+
+        <h2 class="text-danger mb-4">
+
+            Delete Student
+
+        </h2>
+
+        <p class="fs-5">
+
+            Are you sure you want to delete
+
+            <strong>
+
+                {{ student.student_name }}
+
+            </strong> ?
+
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger">
+
+                Yes Delete
+
+            </button>
+
+            <a href="{% url 'student_list' %}"
+               class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+</body>
+</html>
