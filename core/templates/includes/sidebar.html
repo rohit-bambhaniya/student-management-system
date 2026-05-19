@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sidebar</title>
-</head>
-<body>
-    <div class="sidebar p-3">
+<div class="sidebar p-3">
 
     <h3 class="text-center mb-4">
         SMS Panel
@@ -19,12 +11,12 @@
             Dashboard
         </a>
 
-        <a href="#">
+        <a href="{% url 'student_list' %}">
             <i class="bi bi-people"></i>
             Manage Students
         </a>
 
-        <a href="#">
+        <a href="{% url 'teacher_list' %}">
             <i class="bi bi-person-workspace"></i>
             Teachers
         </a>
@@ -71,5 +63,3 @@
     {% endif %}
 
 </div>
-</body>
-</html>

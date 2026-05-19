@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teacher_dashboard</title>
-</head>
-<body>
-  {% extends 'base.html' %}
+
+    {% extends 'base.html' %}
 
 {% block title %}
-Teacher Dashboard
+Student Dashboard
 {% endblock %}
 
 {% block content %}
@@ -17,7 +10,7 @@ Teacher Dashboard
 <div class="container-fluid">
 
     <h2 class="mb-4">
-        Teacher Dashboard
+        Student Dashboard
     </h2>
 
     <div class="card shadow-lg border-0 p-4 rounded-4">
@@ -25,17 +18,19 @@ Teacher Dashboard
         <div class="d-flex justify-content-between align-items-center mb-4">
 
             <div>
+
                 <h3 class="fw-bold">
-                    Welcome {{ request.user.username }}
+                    Welcome {{ student.user.username }}
                 </h3>
 
                 <p class="text-muted mb-0">
-                    Teacher Information Panel
+                    Student Information Panel
                 </p>
+
             </div>
 
             <div>
-                <i class="bi bi-person-workspace fs-1 text-primary"></i>
+                <i class="bi bi-mortarboard-fill fs-1 text-primary"></i>
             </div>
 
         </div>
@@ -49,11 +44,11 @@ Teacher Dashboard
                 <div class="card p-3 shadow-sm">
 
                     <h6 class="text-muted">
-                        Subject
+                        Full_Name
                     </h6>
 
                     <h5>
-                        {{ teacher.subject }}
+                        {{ student.student_name }}
                     </h5>
 
                 </div>
@@ -65,11 +60,11 @@ Teacher Dashboard
                 <div class="card p-3 shadow-sm">
 
                     <h6 class="text-muted">
-                        Qualification
+                        Roll Number
                     </h6>
 
                     <h5>
-                        {{ teacher.qualifications }}
+                        {{ student.roll_num }}
                     </h5>
 
                 </div>
@@ -81,27 +76,11 @@ Teacher Dashboard
                 <div class="card p-3 shadow-sm">
 
                     <h6 class="text-muted">
-                        Experience
+                        Class
                     </h6>
 
                     <h5>
-                        {{ teacher.experience }} Years
-                    </h5>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6 mb-3">
-
-                <div class="card p-3 shadow-sm">
-
-                    <h6 class="text-muted">
-                        Salary
-                    </h6>
-
-                    <h5>
-                        ₹ {{ teacher.salary }}
+                        {{ student.student_class }}
                     </h5>
 
                 </div>
@@ -117,7 +96,7 @@ Teacher Dashboard
                     </h6>
 
                     <h5>
-                        {{ teacher.phone }}
+                        {{ student.phone }}
                     </h5>
 
                 </div>
@@ -129,11 +108,43 @@ Teacher Dashboard
                 <div class="card p-3 shadow-sm">
 
                     <h6 class="text-muted">
-                        Joining Date
+                        Email Address
                     </h6>
 
                     <h5>
-                        {{ teacher.joining_date }}
+                        {{ student.user.email }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Date Of Birth
+                    </h6>
+
+                    <h5>
+                        {{ student.date_of_birth }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h6 class="text-muted">
+                        Account Created
+                    </h6>
+
+                    <h5>
+                        {{ student.created_at }}
                     </h5>
 
                 </div>
@@ -149,23 +160,7 @@ Teacher Dashboard
                     </h6>
 
                     <h5>
-                        {{ teacher.address }}
-                    </h5>
-
-                </div>
-
-            </div>
-
-            <div class="col-12">
-
-                <div class="card p-3 shadow-sm bg-light">
-
-                    <h6 class="text-muted">
-                        Account Created
-                    </h6>
-
-                    <h5>
-                        {{ teacher.created_at }}
+                        {{ student.address }}
                     </h5>
 
                 </div>
@@ -180,5 +175,3 @@ Teacher Dashboard
 
 {% endblock %}
 
-</body>
-</html>

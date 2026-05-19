@@ -1,9 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from students.models import Student
-from teachers.models import Teacher
-from accounts.models import User
 
 
 # Login View
@@ -14,17 +10,13 @@ def login_view(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(
-            request,
-            username=username,
-            password=password
-        )
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
 
             login(request, user)
 
-            # Role Based Redirect
+            # Role-based redirect
             if user.is_admin():
                 return redirect('admin_dashboard')
 
@@ -39,69 +31,5 @@ def login_view(request):
 
 # Logout View
 def logout_view(request):
-
     logout(request)
-
     return redirect('login')
-
-
-# Admin Dashboard
-@login_required
-def admin_dashboard(request):
-
-    total_students = Student.objects.count()
-    total_teachers = Teacher.objects.count()
-    total_admins = User.objects.filter(role = "admin").count
-
-    context = {
-        'total_students': total_students,
-        'total_teachers':total_teachers,
-        'total_admins':total_admins,
-
-    }
-
-    return render(
-        request,
-        'accounts/admin_dashboard.html',
-        context
-    )
-
-
-# Teacher Dashboard
-@login_required
-def teacher_dashboard(request):
-
-    teacher = Teacher.objects.get(
-        user=request.user
-    )
-
-    context = {
-
-        'teacher' : teacher
-    }
-
-    return render(
-        request,
-        'accounts/teacher_dashboard.html',
-        context
-    )
-
-
-# Student Dashboard
-@login_required
-def student_dashboard(request):
-
-    student = Student.objects.get(
-        user=request.user
-    )
-
-    context = {
-
-        'student': student
-    }
-
-    return render(
-        request,
-        'accounts/student_dashboard.html',
-        context
-    )

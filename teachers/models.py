@@ -8,6 +8,11 @@ class Teacher(models.Model):
         on_delete=models.CASCADE
     )
 
+    teacher_name = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
     subject = models.CharField(
         max_length=100
     )
