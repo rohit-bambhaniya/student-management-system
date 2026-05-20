@@ -1,31 +1,25 @@
 from django.db import models
-from teachers.models import Teacher
 from students.models import Student
+from teachers.models import Teacher
+
 
 class Attendance(models.Model):
 
     STATUS_CHOICES = (
-        ('Present', 'Present'),
-        ('Absent', 'Absent')
+        ('P', 'Present'),
+        ('A', 'Absent'),
     )
 
-    student = models.ForeignKey(
-        Student,
-        on_delete = models.CASCADE
-    )
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT)
+    date = models.DateField()
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    teacher = models.ForeignKey(
-        Teacher,
-        on_delete = models.CASCADE
-    )
-
-    date = models.DateField(auto_now_add=True)
-
-    status = models.CharField(
-        max_length=10,
-        choices = STATUS_CHOICES
-    )
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['student', 'date'], name='unique_attendance_per_day')
+        ]
 
     def __str__(self):
-        return f"{self.student} - {self.status}"
-# Create your models here.
+        return f"{self.student} - {self.date} - {self.get_status_display()}"

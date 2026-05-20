@@ -2,114 +2,117 @@
 <html>
 <head>
     <title>Mark Attendance</title>
-
     <style>
-
-        body{
+        body {
             font-family: Arial;
-            background: #f4f4f4;
+            background: #f4f6f9;
             padding: 20px;
         }
 
-        h1{
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
             text-align: center;
         }
 
-        table{
+        table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            margin-top: 20px;
         }
 
-        th, td{
-            padding: 12px;
+        th, td {
             border: 1px solid #ddd;
+            padding: 10px;
             text-align: center;
         }
 
-        th{
-            background: #2c3e50;
+        th {
+            background: #007bff;
             color: white;
         }
 
-        .present{
-            background: green;
-            color: white;
-            padding: 5px 10px;
+        .btn {
+            padding: 6px 12px;
             border: none;
+            cursor: pointer;
             border-radius: 5px;
         }
 
-        .absent{
-            background: red;
+        .present {
+            background: #28a745;
             color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
         }
 
-        button{
+        .absent {
+            background: #dc3545;
+            color: white;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
+        .error {
+            color: red;
+            text-align: center;
+        }
     </style>
-
 </head>
 <body>
 
-    <h1>Mark Attendance</h1>
+<div class="container">
+
+    <h2>Mark Attendance</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
 
     <form method="POST">
-
         {% csrf_token %}
 
         <table>
-
             <tr>
-
-                <th>Roll No</th>
                 <th>Student Name</th>
-                <th>Status</th>
-
+                <th>Roll No</th>
+                <th>Present</th>
+                <th>Absent</th>
             </tr>
 
             {% for student in students %}
-
             <tr>
-
-                <td>{{ student.roll_number }}</td>
-
-                <td>{{ student.user.username }}</td>
+                <td>{{ student.student_name }}</td>
+                <td>{{ student.roll_num }}</td>
 
                 <td>
-
-                    <select name="status_{{ student.id }}">
-
-                        <option value="Present">
-                            Present
-                        </option>
-
-                        <option value="Absent">
-                            Absent
-                        </option>
-
-                    </select>
-
+                    <input type="radio" name="student_{{ student.id }}" value="P">
                 </td>
 
+                <td>
+                    <input type="radio" name="student_{{ student.id }}" value="A">
+                </td>
             </tr>
-
             {% endfor %}
 
         </table>
 
-        <br>
-
-        <button type="submit">
-            Save Attendance
-        </button>
-
+        <button type="submit" class="submit-btn">Save Attendance</button>
     </form>
+
+</div>
 
 </body>
 </html>

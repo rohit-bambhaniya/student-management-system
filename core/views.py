@@ -30,18 +30,27 @@ def admin_dashboard(request):
 @login_required
 def teacher_dashboard(request):
 
-    teacher = Teacher.objects.get(user=request.user)
+    teacher = Teacher.objects.filter(user=request.user).first()
+
+    if not teacher:
+        return render(request, 'core/error.html', {
+            'message': 'Teacher profile not linked with this account'
+        })
 
     return render(request, 'core/teacher_dashboard.html', {
         'teacher': teacher
     })
 
-
 # Student Dashboard
 @login_required
 def student_dashboard(request):
 
-    student = Student.objects.get(user=request.user)
+    student = Student.objects.filter(user=request.user).first()
+
+    if not student:
+        return render(request, 'core/error.html', {
+            'message': 'Student profile not linked with this account'
+        })
 
     return render(request, 'core/student_dashboard.html', {
         'student': student

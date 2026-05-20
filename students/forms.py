@@ -3,6 +3,7 @@ from .models import Student
 
 
 class StudentForm(forms.ModelForm):
+    
 
     class Meta:
 
@@ -19,6 +20,7 @@ class StudentForm(forms.ModelForm):
         ]
 
         widgets = {
+
 
             'student_name': forms.TextInput(attrs={
                 'class':'form-control'

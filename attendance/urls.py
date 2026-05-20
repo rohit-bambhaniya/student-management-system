@@ -9,4 +9,11 @@ urlpatterns = [
         name='mark_attendance'
     ),
 
+     path(
+         'report/', 
+         views.attendance_report, 
+         name='attendance_report'
+    ),
+
+
 ]
